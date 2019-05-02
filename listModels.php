@@ -19,6 +19,6 @@
 </div>
 <!--<script>
     setInterval(function(){
-        getModelList(); // this will run after every 10 seconds
+        listModels(); // this will run after every 10 seconds
     }, 10000);
 </script>-->

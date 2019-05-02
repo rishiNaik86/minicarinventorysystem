@@ -12,11 +12,12 @@ $manufacturers = $connection->getdata($databaseConnection, "SELECT * FROM manufa
 <div>
     <div id="response"></div>
     <form id="addModel">
-        <div class="form-group">
+        <div class="row">
+        <div class="form-group col-xs-6">
             <label for="name">Name*</label>
             <input type="text" name="name" id="name" class="form-control" placeholder="Name">
         </div>
-        <div class="form-group">
+        <div class="form-group col-xs-6">
             <label for="manufacturer">Manufacturer*</label>
             <select id="manufacturer" name="manufacturer" class="form-control">
                 <?php foreach($manufacturers as $manufacturer) {?>
@@ -24,11 +25,11 @@ $manufacturers = $connection->getdata($databaseConnection, "SELECT * FROM manufa
                 <?php } ?>
                 </select>
             </div>
-        <div class="form-group">
+        <div class="form-group col-xs-12">
             <label for="color">Color</label>
             <input type="text" name="color" id="color" class="form-control" placeholder="Color">
         </div>
-        <div class="form-group">
+        <div class="form-group col-xs-12">
             <label for="manYear">Manufacturing Year*</label>
             <select id="manYear" name="manYear" class="form-control">
                 <?php for($i = 2000; $i <= date('Y'); $i++) { ?>
@@ -36,15 +37,22 @@ $manufacturers = $connection->getdata($databaseConnection, "SELECT * FROM manufa
                 <?php } ?>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group col-xs-12">
             <label for="regNum">Regisration Number*</label>
             <input type="text" name="regNum" id="regNum" class="form-control" placeholder="Registration Number">
         </div>
-        <div class="form-group">
+        <div class="form-group col-xs-12">
             <label for="note">Note</label>
             <textarea name="note" id="note" class="form-control" placeholder="Note" rows="5" cols="40"></textarea>
         </div>
+        <div class="form-group col-xs-12">
+            <label for="uploadFiles">Upload Picture</label>
+            <input type="file" id="myfile1" name="attachment">
+        </div>
+        <div class="form-group col-xs-12">
         <input type="submit" class="btn btn-default" value="Submit" name="submit">
+        </div>
+        </div>
     </form>
 </div>
 <script type="text/javascript">
@@ -73,7 +81,12 @@ $manufacturers = $connection->getdata($databaseConnection, "SELECT * FROM manufa
                 $.ajax({
                     type: 'post',
                     url: "controller/modelController.php",
-                    data: $form.serialize(),
+                    //data: $form.serialize(),
+                    data: new FormData(form),
+                    mimeType: "multipart/form-data",
+                    cache: false,
+                    contentType: false,
+                    processData: false, 
                     success: function(response)
                     {
                         $('#response').html(response);

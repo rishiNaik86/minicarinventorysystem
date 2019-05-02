@@ -6,7 +6,7 @@
     <form id="addManufacturer">
         <div class="form-group">
             <label for="name">Name*</label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="Name">
+            <input type="text" name="name" id="name" class="form-control" placeholder="Name" required="required">
         </div>
         <input type="submit" class="btn btn-default" value="Submit" name="submit">
     </form>

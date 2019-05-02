@@ -6,7 +6,7 @@ include_once '../classes/Database.php';
 if (isset($_POST['name'])) 
 {
     $model = new Model();
-    $status = $model->setModel($_POST);
+    $status = $model->setModel($_POST, $_FILES);
     return $status;
 }
 
