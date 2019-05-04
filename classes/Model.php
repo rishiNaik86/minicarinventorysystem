@@ -50,7 +50,7 @@ class Model
     {
         $connection = new Database();
         $databaseConnection = $connection->connect();
-        $allModels = $connection->getdata($databaseConnection, "SELECT Model.id as modelId, Model.name as modelName, Model.count as modelCount, Manufacturer.id as manufacturerId, Manufacturer.name as manufacturerName FROM Model INNER JOIN Manufacturer ON Model.manufacturer_id = Manufacturer.id");
+        $allModels = $connection->getdata($databaseConnection, "SELECT model.id as modelId, model.name as modelName, model.count as modelCount, manufacturer.id as manufacturerId, manufacturer.name as manufacturerName FROM model INNER JOIN manufacturer ON model.manufacturer_id = manufacturer.id");
         $i = 1;
         $returnArray = array();
         foreach ($allModels as $model)

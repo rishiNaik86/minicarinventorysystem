@@ -7,7 +7,7 @@ if (isset($_GET['id']))
     $connection = new Database();
     $databaseConnection = $connection->connect();
     $id = $connection->testData($_GET['id']);
-    $singleModel = $connection->getdata($databaseConnection, "SELECT Model.id as modelId, Model.name as modelName, Model.count as modelCount, Model.color as modelColor, Model.manufacture_year as modelManYear, Model.registration_number as modelRegNumber, Model.note as modelNote, Manufacturer.id as manufacturerId, Manufacturer.name as manufacturerName FROM Model INNER JOIN Manufacturer ON Model.manufacturer_id = Manufacturer.id WHERE Model.id = '$id'");
+    $singleModel = $connection->getdata($databaseConnection, "SELECT model.id as modelId, model.name as modelName, model.count as modelCount, model.color as modelColor, model.manufacture_year as modelManYear, model.registration_number as modelRegNumber, model.note as modelNote, manufacturer.id as manufacturerId, manufacturer.name as manufacturerName FROM model INNER JOIN manufacturer ON model.manufacturer_id = manufacturer.id WHERE model.id = '$id'");
     $row = mysqli_fetch_assoc($singleModel);
     //var_dump($row);
 ?>
